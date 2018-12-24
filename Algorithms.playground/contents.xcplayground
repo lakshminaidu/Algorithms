@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='ios'>
+    <pages>
+        <page name='Sortings'/>
+        <page name='Mutilpecolletion'/>
+        <page name='TwoSum Problem'/>
+        <page name='ProductsArray'/>
+        <page name='DataStrutures'/>
+        <page name='UI'/>
+        <page name='Practice'/>
+        <page name='Strings'/>
+        <page name='HacckerRank'/>
+    </pages>
+</playground>
