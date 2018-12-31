@@ -10,5 +10,8 @@
         <page name='Practice'/>
         <page name='Strings'/>
         <page name='HacckerRank'/>
+        <page name='Codable'/>
+        <page name='LinkedList'/>
+        <page name='Trie'/>
     </pages>
 </playground>

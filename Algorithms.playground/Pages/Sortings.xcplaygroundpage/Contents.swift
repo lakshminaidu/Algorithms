@@ -34,7 +34,7 @@ let mergeSortArray = mergeSort(unsortedNumbers)
 print("merge Sorted \(mergeSortArray)")
 
 //MergeSort
-func bubbleSort<T>( array:[T]) -> [T] where T:Comparable {
+func bubbleSort<T:Comparable>( array:[T]) -> [T]   {
     guard array.count > 1 else {
         return array
     }
@@ -42,9 +42,10 @@ func bubbleSort<T>( array:[T]) -> [T] where T:Comparable {
     for i in 0..<array.count {
         for j in 0..<array.count - i - 1 {
             if array[j] > array[j+1] {
-                let temp = array[j+1]
-                array[j+1] = array[j]
-                array[j] = temp
+                array.swapAt(j, j+1)
+//                let temp = array[j+1]
+//                array[j+1] = array[j]
+//                array[j] = temp
             }
         }
     }
@@ -60,38 +61,39 @@ func insertionSort<T:Comparable>( array:[T]) -> [T]  {
     guard array.count > 1 else {
         return array
     }
-    var array = array
-
-    for i in 1...array.count - 1 {
+    var a = array
+    for i in 1..<a.count {
         var y = i
-        let value = array[i]
-        while y > 0 && value < array[y - 1]{
-            array[y] = array [y - 1]
+        let temp = a[y]
+        while y > 0 && temp < a[y - 1] {
+            a[y] = a[y - 1]
             y -= 1
         }
+        a[y] = temp
     }
-    return array
+    return a
 }
 let insertionSortArray = insertionSort(array: ["ass","fgg","xyz","bdd"])
 print("insersion Sorted \(insertionSortArray)")
+let insertionSortArrayNumbers = insertionSort(array: unsortedNumbers)
 
 //SelectionSort
-func selectionSort<T:Comparable>(array:[T])->[T]   {
+func selectionSort<T:Comparable>(array:[T]) -> [T]   {
     guard array.count > 1 else { return array }  // 1
     
     var a = array                    // 2
     
-    for x in 0 ..< a.count - 1 {     // 3
+    for i in 0 ..< a.count - 1 {     // 3
         
-        var lowest = x
-        for y in x + 1 ..< a.count {   // 4
-            if a[y] < a[lowest] {
-                lowest = y
+        var lowest = i
+        for j in i + 1 ..< a.count {   // 4
+            if a[j] < a[lowest] {
+                lowest = j
             }
         }
         
-        if x != lowest {               // 5
-            a.swapAt(x, lowest)
+        if i != lowest {               // 5
+            a.swapAt(i, lowest)
         }
     }
     return a

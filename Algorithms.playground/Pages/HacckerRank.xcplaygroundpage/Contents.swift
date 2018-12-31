@@ -176,4 +176,152 @@ func sockMerchant(n: Int, ar: [Int]) -> Int {
 let socks1 = [1, 1, 3, 1, 2, 1, 3, 3, 3, 3]
 sockMerchant(n: socks1.count, ar: socks1)
 
+func jumpingOnClouds(c: [Int]) -> Int {
+    var count = 0
+    var i = 0
+    while i < c.count - 1 {
+        if i+2 < c.count && c[i + 2] == 0 {
+            i +=  2
+            count += 1
+        }
+        else {
+            i +=  1
+            count += 1
+            
+        }
+    }
+    return count
+}
+jumpingOnClouds(c:[0,1,0,0,0,1,0])//3
+jumpingOnClouds(c: [0 ,0 ,0 ,0 ,1, 0])//3
+jumpingOnClouds(c: [0, 0, 1, 0, 0, 1, 0])//4
+jumpingOnClouds(c: [0, 0, 1, 0, 0])//2
+
+
+func hurdleRace(k: Int, height: [Int]) -> Int {
+    var race = 0
+    for i in 0..<height.count {
+        if height[i] > k {
+            race = height[i] - k
+            break
+        }
+    }
+    
+    return race
+}
+
+hurdleRace(k: 4, height: [1,6,3,5,2])//2
+hurdleRace(k: 7, height: [2,5,4,5,2])
+
+//gradingStudents
+func gradingStudents(grades: [Int]) -> [Int] {
+    var newgrades = [Int]()
+    for i in 0..<grades.count {
+        if grades[i] <= 37 {
+            newgrades.append( grades[i])
+            
+        } else {
+            
+            if grades[i] % 5 == 3  {
+                let newgrade = grades[i] + (5 - grades[i]%5)
+                newgrades.append(newgrade)
+                
+            } else {
+                newgrades.append( grades[i])
+                
+            }
+        }
+        
+    }
+    return newgrades
+    
+    /*
+     * Write your code here.
+     */
+    
+}
+gradingStudents(grades: [73,67,38,33,22,40])
+
+// Complete the circularArrayRotation function below.
+func circularArrayRotation(a: [Int], k: Int, queries: [Int]) -> [Int] {
+    //let k = k+1
+    let rotatedArray = Array(a[k...]) + Array(a[..<k])
+    print(rotatedArray)
+    
+    var answers = [Int]()
+    
+    for i in 0..<queries.count {
+        answers.append(rotatedArray[i])
+    }
+    return answers
+    
+}
+
+circularArrayRotation(a: [1,2,3,4,5], k: 2, queries: [0,1,2])
+circularArrayRotation(a: [3,4,5], k: 2, queries: [1,2])
+
+func findDigits(n: Int) -> Int {
+    let s = String(n)
+    var count = 0
+    for c in s {
+        // print(c)
+        let digt = Int(String(c))!
+        //print(digt)
+        
+        if digt != 0 && n / digt != 0 {
+            count += 1
+        }
+        
+    }
+    return count
+    
+}
+
+findDigits(n: 111)
+findDigits(n: 1012)
+findDigits(n: 12)
+findDigits(n: 106108048)
+findDigits(n: 88)
+
+func countApplesAndOranges(s: Int, t: Int, a: Int, b: Int, apples: [Int], oranges: [Int]) -> Void {
+    
+    let applecount = apples.map({$0 + a}).filter({$0 >= s && $0 <= t}).count
+    print(applecount)
+    let orangesecount = oranges.map({$0 + b}).filter({$0 >= s && $0 <= t}).count
+    print(orangesecount)
+    
+}
+
+countApplesAndOranges(s: 7, t: 11, a: 5, b: 15, apples: [-2,2,1], oranges: [5, -6])//1 1
+countApplesAndOranges(s: 7, t: 10, a: 4, b: 12, apples: [2,3,-4], oranges: [3, -2,-4])//1 2
+
+
+func kangaroo(x1: Int, v1: Int, x2: Int, v2: Int) -> String {
+    
+    var x1 = x1
+    var x2 = x2
+    
+    
+    while v1 > v2 && x1 < x2  {
+        x1 = x1 + v1
+        x2 = x2 + v2
+        if x1 == x2 {
+            return "YES"
+        }
+        x1 += 1
+        x2 += 1
+        
+    }
+    return "NO"
+}
+
+func printStairCase(input: Int){
+    var hash = "#"
+    for i in 0..<input {
+        let spaces = String(repeating: " ", count: input-i-1)
+        print ( spaces + hash)
+        hash += "#"
+    }
+}
+printStairCase(input: 10)
 

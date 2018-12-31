@@ -8,7 +8,6 @@ var str = "Hello, playground"
 import Foundation
 
 
-var str = "Hello, playground"
 let atIndex = str[str.startIndex ]//str.startIndex
 let sorted = str.sorted()
 let sa = str.sorted{$0 > $1}
@@ -89,13 +88,6 @@ for items1 in str{
 }
 print ("reversed str ", reversedStr)
 
-func printStairCase(input: Int){
-    var hash = "#"
-    for i in 0..<input {
-        let spaces = String(repeating: " ", count: input-i-1)
-        print ( spaces + hash)
-        hash += "#"
-    }
-}
+
 
 printStairCase(input: 10)
