@@ -100,6 +100,7 @@ func selectionSort<T:Comparable>(array:[T]) -> [T]   {
     
 }
 selectionSort(array: unsortedNumbers)//[67,4,8,10,4,78,34]
+
 //MARK: Seraching
 
 //LinearSearch

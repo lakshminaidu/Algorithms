@@ -300,8 +300,6 @@ func kangaroo(x1: Int, v1: Int, x2: Int, v2: Int) -> String {
     
     var x1 = x1
     var x2 = x2
-    
-    
     while v1 > v2 && x1 < x2  {
         x1 = x1 + v1
         x2 = x2 + v2
@@ -325,3 +323,82 @@ func printStairCase(input: Int){
 }
 printStairCase(input: 10)
 
+//divisibleSumPairs
+
+func divisibleSumPairs(_ array:[Int], div: Int) -> Int {
+    var count = 0
+    
+    for i in 0..<array.count {
+        // print(i)
+        for j in i+1..<array.count {
+            let sum = array[i] + array[j]
+            if sum % div == 0 {
+                print(array[i],array[j])
+                count += 1
+            }
+        }
+    }
+    return count
+}
+
+divisibleSumPairs([1,2,3,4,5,6], div: 5)
+divisibleSumPairs([1,3,2,6,1,2], div: 3)
+
+// find the max value of each subarray of length k
+func maxValues(array: [Int], length: Int) -> [Int] {
+    var maxValues = [Int]()
+    for i in 0...array.count-length  {
+        let subArray = Array(array[i..<i+length])
+        print(subArray)
+        maxValues.append(subArray.max()!)
+    }
+    
+    return maxValues
+}
+
+maxValues(array: [10,5,2,7,8,7], length: 3)
+//Print the type number of the most common bird; if two or more types of birds are equally common, choose the type with the smallest ID number.
+
+// Complete the migratoryBirds function below.
+func migratoryBirds(arr: [Int]) -> Int {
+    var typeCount = 0
+    let set = Set(arr).sorted()
+    var type = arr[0]
+    for i in set {
+        let count = arr.filter({$0 == i}).count
+        if count > typeCount {
+            typeCount = count
+            type = i
+        }
+    }
+    return type
+    
+}
+
+migratoryBirds(arr: [1, 4 ,4 ,4, 5, 3])//4
+
+migratoryBirds(arr: [1, 2 ,3 ,4, 5, 4,3,2,1,3,4])//3
+migratoryBirds(arr: [1, 1 ,2 ,2, 3])//1
+
+// Complete the dayOfProgrammer function below.
+func dayOfProgrammer(year: Int) -> String {
+    let month = 09
+    var day = 13
+    if year % 100 == 0  {
+        if year / 400 == 4 {
+            day -= 1
+        }
+    }
+    else if year%4 == 0  {
+        day -= 1
+    }
+    return "\(day).0\(month).\(year)"
+    
+}
+
+dayOfProgrammer(year: 2017)
+dayOfProgrammer(year: 2016)
+dayOfProgrammer(year: 1800)
+dayOfProgrammer(year: 2100)
+dayOfProgrammer(year: 1700)
+dayOfProgrammer(year: 1918)
