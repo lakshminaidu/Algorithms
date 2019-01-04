@@ -14,5 +14,6 @@
         <page name='LinkedList'/>
         <page name='Trie'/>
         <page name='QucikSort'/>
+        <page name='Input'/>
     </pages>
 </playground>

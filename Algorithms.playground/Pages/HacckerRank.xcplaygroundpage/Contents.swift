@@ -402,3 +402,72 @@ dayOfProgrammer(year: 1800)
 dayOfProgrammer(year: 2100)
 dayOfProgrammer(year: 1700)
 dayOfProgrammer(year: 1918)
+
+
+func mergeStrings(a: String, b: String) -> String {
+    
+    var mergedString = ""
+    let count = a.count
+    for i in 0..<count {
+        mergedString +=  String(a[a.index(a.startIndex, offsetBy: i)]) + String(b[b.index(b.startIndex, offsetBy: i)])
+    }
+    
+    if count < a.count {
+        let range = a.index(a.startIndex, offsetBy: count)...
+        mergedString += a[range]
+    }
+    if count < b.count {
+        let range = b.index(b.startIndex, offsetBy: count)...
+        mergedString +=  b[range]
+    }
+    return mergedString
+    
+}
+mergeStrings(a: "ab", b: "def")
+
+// Complete the appendAndDelete function below.
+
+func appendAndDelete(s: String, t: String, k: Int) -> String {
+    if s == t {
+        return "Yes"
+    }
+    var operations = 0
+    var droppedString = s
+    for _ in 0..<k {
+        droppedString  = String(droppedString.dropLast())
+        operations += 1
+        if droppedString == ""  && k - operations <= t.count{
+            break
+        }
+        if t.hasPrefix(droppedString) {
+            break
+        }
+    }
+    if droppedString == t {
+        return "Yes"
+    }
+    let deletOp = k - operations
+    droppedString += String(t.suffix(deletOp))
+    if droppedString == t {
+        return "Yes"
+    }
+    return "No"
+}
+appendAndDelete(s: "aba", t: "aba", k: 7)
+appendAndDelete(s: "hackerhappy", t: "hackerrank", k: 9)
+appendAndDelete(s: "ashley", t: "ash", k: 2)
+appendAndDelete(s: "qwerty", t: "zxcvbn", k: 100)
+appendAndDelete(s: "qwerasdf", t: "qwerbsdf", k: 6)
+appendAndDelete(s: "abcd", t: "abcdert", k: 10)
+
+func squares(a: Int, b: Int) -> Int {
+    var count = 0
+    for i in a...b {
+        if let x = sqrt(Double(i)) as? Int {
+            count += 1
+        }
+    }
+    return count
+}
+
+squares(a: 3, b: 9)
